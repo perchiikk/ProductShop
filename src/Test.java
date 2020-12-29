@@ -1,4 +1,7 @@
-package products;
+import products.Beer;
+import products.Customer;
+import products.Juice;
+import products.Vodka;
 
 import java.util.Map;
 
