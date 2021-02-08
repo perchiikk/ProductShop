@@ -1,9 +1,19 @@
 package products;
 
 public class Onion extends SomeProduct{
-    int count = 100;
-    int price = 10;
+    private int count = 100;
+    private int price = 10;
+    private String productName = "Чеснок";
+
     public int getPrice() {
         return price;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
