@@ -1,17 +1,24 @@
 package products;
 
 public class Tomatos extends SomeProduct{
-    private int count = 130;
+    private static int count = 130;
     private int price = 80;
     private String productName = "Томат";
+    private  boolean alco = false;
 
+    @Override
+    public int getCount() {
+        return count;
+    }
+
+    @Override
     public int getPrice() {
         return price;
     }
 
     @Override
-    public int getCount() {
-        return count;
+    public boolean isAlco() {
+        return alco;
     }
 
     @Override

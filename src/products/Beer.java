@@ -1,9 +1,10 @@
 package products;
 
 public class Beer extends SomeProduct {
-    private int count = 100;
+    private static int count = 100;
     private int price = 50;
-    private String nameProduct = "Пиво";
+    private boolean alco = true;
+    private String name = "Пиво";
 
     public int getCount() {
         return count;
@@ -13,7 +14,11 @@ public class Beer extends SomeProduct {
         return price;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public boolean isAlco() {
+        return alco;
+    }
+
+    public String getName() {
+        return name;
     }
 }

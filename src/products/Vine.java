@@ -1,17 +1,24 @@
 package products;
 
 public class Vine extends SomeProduct{
-    private int count = 90;
+    private static int count = 90;
     private int price = 350;
     private String productName = "Вино";
+    private boolean alco = true;
 
+    @Override
+    public int getCount() {
+        return count;
+    }
+
+    @Override
     public int getPrice() {
         return price;
     }
 
     @Override
-    public int getCount() {
-        return count;
+    public boolean isAlco() {
+        return alco;
     }
 
     @Override
