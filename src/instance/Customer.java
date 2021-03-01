@@ -46,14 +46,19 @@ public class Customer {
      */
     public void addToCartOrder() throws IOException {
         Map<String, Integer> mapOfOrder = shopManager.getOrder();
-        for(Map.Entry<String, Integer> entry : mapOfOrder.entrySet()){
-            SomeProduct someProduct = shopManager.getTypeProduct(entry.getKey());
-            int count = entry.getValue();
-            productCart.addToCart(someProduct, count);
+        if(mapOfOrder.isEmpty()){
+            ConsoleHelper.writeMessage("Невозможно положить товар в корзину. Вы не выбрали ни одной позиции");
         }
-        ConsoleHelper.writeMessage("\n");
-        ConsoleHelper.writeMessage("Товар успешно добавлен в корзину");
-        System.out.println("====================");
+        else {
+            for(Map.Entry<String, Integer> entry : mapOfOrder.entrySet()){
+                SomeProduct someProduct = shopManager.getTypeProduct(entry.getKey());
+                int count = entry.getValue();
+                productCart.addToCart(someProduct, count);
+            }
+            ConsoleHelper.writeMessage("\n");
+            ConsoleHelper.writeMessage("Товар успешно добавлен в корзину");
+            System.out.println("====================");
+        }
     }
     /**
      * Пользователь добавляет позицию в корзину
@@ -67,59 +72,84 @@ public class Customer {
      * Показать содержимое коризны пользователя
      */
     public void showProductCar() {
-        productCart.showProductCar();
-        System.out.println("====================");
+        if(productCart.getEmpty()){
+            ConsoleHelper.writeMessage("Ваша корзина пуста");
+        }
+        else {
+            productCart.showProductCar();
+            System.out.println("====================");
+        }
     }
 
     /**
      * Удалить элемент из корзины
      */
     public void removeFromProductCar(SomeProduct someProduct, int count) {
-        productCart.removeFromCart(someProduct, count);
-        System.out.println("====================");
+        if(productCart.getEmpty()){
+            ConsoleHelper.writeMessage("Ваша корзина пуста");
+        }
+        else {
+            productCart.removeFromCart(someProduct, count);
+            System.out.println("====================");
+        }
     }
 
     /**
      * Удалить все содержимое корзины
      */
     public void removeAllCart() {
-        productCart.removeAll();
-        System.out.println("====================");
+        if(productCart.getEmpty()){
+            ConsoleHelper.writeMessage("Нельзя очистить корзину. Ваша корзина уже пуста");
+        }
+        else {
+            productCart.removeAll();
+            System.out.println("====================");
+        }
     }
 
     /**
      * Получить стоимость всего в корзине
      */
     public void getSumm() {
-        productCart.getSum();
-        System.out.println("====================");
+        if(productCart.getEmpty()){
+            ConsoleHelper.writeMessage("Нельзя получить сумму покупки. Ваша корзина пуста");
+        }
+        else {
+            productCart.getSum();
+            System.out.println("====================");
+        }
     }
 
     /**
      * Совершить покупку
      */
     public void buy() {
-        List<SomeProduct> alcoProduct = productCart.getAlco();
-        if (!alcoProduct.isEmpty()) {
-            if (getAge() >= 18) {
-                System.out.println("Продажа алкоголя разрешена, Вам есть 18, поздравляю");
-            } else {
-                System.out.println("Вам нет 18, продажа алкоголя запрещена. Удалим алкоголь из вашей корзины");
-                for (int i = 0; i < alcoProduct.size(); i++) {
-                    productCart.removeCount(alcoProduct.get(i));
+        if(productCart.getEmpty()){
+            ConsoleHelper.writeMessage("Невозможно совершить покупку. Ваша корзина пуста");
+        }
+        else {
+            List<SomeProduct> alcoProduct = productCart.getAlco();
+            if (!alcoProduct.isEmpty()) {
+                if (getAge() >= 18) {
+                    System.out.println("Продажа алкоголя разрешена, Вам есть 18, поздравляю");
+                } else {
+                    System.out.println("Вам нет 18, продажа алкоголя запрещена. Удалим алкоголь из вашей корзины");
+                    for (int i = 0; i < alcoProduct.size(); i++) {
+                        productCart.removeCount(alcoProduct.get(i));
+                    }
                 }
             }
-        }
-        double allSum = productCart.getSum();
-        if (allSum <= budget) {
-            System.out.println("Покупка на сумму " + allSum + " р. выполнена успешно");
-            setBudget(budget - allSum);
-            System.out.println("Остаток средств " + getBudget() + " р.");
-            productCart.removeAll();
-        } else {
-            System.out.println("Недостаточно средств");
-        }
+            double allSum = productCart.getSum();
+            if (allSum <= budget) {
+                System.out.println("Покупка на сумму " + allSum + " р. выполнена успешно");
+                setBudget(budget - allSum);
+                System.out.println("Остаток средств " + getBudget() + " р.");
+                productCart.removeAll();
+            } else {
+                System.out.println("Недостаточно средств");
+            }
 
-        System.out.println("====================");
+            System.out.println("====================");
+        }
     }
 }

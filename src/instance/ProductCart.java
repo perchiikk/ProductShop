@@ -120,4 +120,8 @@ public class ProductCart {
     public Map<SomeProduct, Integer> getProductCart() {
         return productCart;
     }
+
+    public boolean getEmpty(){
+        return productCart.isEmpty();
+    }
 }

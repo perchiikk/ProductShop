@@ -1,5 +1,4 @@
 import instance.*;
-import products.Beer;
 
 import java.io.IOException;
 
