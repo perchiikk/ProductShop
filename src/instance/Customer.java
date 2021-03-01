@@ -50,8 +50,10 @@ public class Customer {
             SomeProduct someProduct = shopManager.getTypeProduct(entry.getKey());
             int count = entry.getValue();
             productCart.addToCart(someProduct, count);
-            System.out.println("====================");
         }
+        ConsoleHelper.writeMessage("\n");
+        ConsoleHelper.writeMessage("Товар успешно добавлен в корзину");
+        System.out.println("====================");
     }
     /**
      * Пользователь добавляет позицию в корзину

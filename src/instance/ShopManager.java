@@ -10,14 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShopManager {
-    private Map<String, Integer> mapOfOrder = new HashMap<>();
+    private Map<String, Integer> mapOfOrder;
     private String nameCustomer;
     private int ageCustomer;
     private int budgetCustomer;
-
-    public String getNameCustomer() {
-        return nameCustomer;
-    }
 
     public int getAgeCustomer() {
         return ageCustomer;
@@ -27,13 +23,33 @@ public class ShopManager {
         return budgetCustomer;
     }
 
+    /**
+     * Приветсвие с покупателем
+     * @throws IOException
+     */
     public void sayHello() throws IOException {
         ConsoleHelper.writeMessage("Добро пожаловать в наш магазин! Как вас зовут?");
         nameCustomer = ConsoleHelper.readText();
         ConsoleHelper.writeMessage("Сколько вам лет?");
-        ageCustomer = ConsoleHelper.readInt();
+        while (true){
+            ageCustomer = ConsoleHelper.readInt();
+            if(ageCustomer > 0){
+                break;
+            }
+            else {
+                System.out.println("Неверный возраст. Повторите ввод");
+            }
+        }
         ConsoleHelper.writeMessage("Введите ваш бюджет");
-        budgetCustomer = ConsoleHelper.readInt();
+        while (true){
+            budgetCustomer = ConsoleHelper.readInt();
+            if(budgetCustomer > 0){
+                break;
+            }
+            else{
+                System.out.println("Неверный бюджет. Повторите ввод");
+            }
+        }
         ConsoleHelper.writeMessage("Отлично! Ваш профиль создан. Выберите позиции для покупки");
         for(Map.Entry<String, SomeProduct> entry : Storage.storageMap.entrySet()){
             System.out.print(entry.getKey() + ", ");
@@ -42,16 +58,20 @@ public class ShopManager {
         System.out.println("====================");
     }
 
+    /**
+     * Передача списка заказа
+     * @throws IOException
+     */
     public Map<String, Integer> getOrder() throws IOException {
+        mapOfOrder = new HashMap<>();
+        String order = "";
+        int count = 0;
         while(true){
-            ConsoleHelper.writeMessage("Введите название позиции или exit для выхода");
-            String order = ConsoleHelper.readText().toLowerCase();
+            order = getProductName();
             if(order.equals("exit")){
-                ConsoleHelper.writeMessage("Заказ передан на сборку");
                 break;
             }
-            ConsoleHelper.writeMessage("Введите количество");
-            int count = ConsoleHelper.readInt();
+            count = getCountOfProduct();
             mapOfOrder.put(order, count);
         }
         return mapOfOrder;
@@ -60,4 +80,37 @@ public class ShopManager {
     public SomeProduct getTypeProduct(String nameProduct){
         return Storage.storageMap.get(nameProduct);
     }
+
+    public String getProductName() throws IOException {
+        String order;
+        while (true){
+            ConsoleHelper.writeMessage("Введите название позиции или exit для выхода");
+            order = ConsoleHelper.readText().toLowerCase();
+            if(order.equals("exit")){
+                break;
+            }
+            else if(Storage.storageMap.containsKey(order)){
+                return order;
+            }
+            else{
+                ConsoleHelper.writeMessage("Вы ввели неверное название товара");
+            }
+        }
+        return order = "exit";
+    }
+
+    public int getCountOfProduct() {
+        int count = 0;
+        while (true){
+            ConsoleHelper.writeMessage("Введите количество");
+            count = ConsoleHelper.readInt();
+            if(count > 0) {
+                return count;
+            }
+            else {
+                ConsoleHelper.writeMessage("Введите число больше 0");
+            }
+        }
+    }
 }
+

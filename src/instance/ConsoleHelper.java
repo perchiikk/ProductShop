@@ -14,8 +14,14 @@ public class ConsoleHelper {
         return reader.readLine();
     }
 
-    public static int readInt() throws IOException {
-        return Integer.parseInt(readText());
+    public static int readInt() {
+        while (true) {
+            try {
+                return Integer.parseInt(readText());
+            } catch (Exception e) {
+                ConsoleHelper.writeMessage("Вы ввели неверное число. Повторите ввод");
+            }
+        }
     }
 
 }

@@ -11,9 +11,6 @@ public class MainClass {
         shopManager.sayHello();
         Customer tanya = new Customer(shopManager.getBudgetCustomer(), new ProductCart(), shopManager.getAgeCustomer(), shopManager);
         tanya.addToCartOrder();
-        System.out.println();
-        tanya.removeFromProductCar(new Beer(), 2);
-        System.out.println();
         tanya.buy();
     }
 
