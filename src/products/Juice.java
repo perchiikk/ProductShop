@@ -3,8 +3,8 @@ package products;
 public class Juice extends SomeProduct {
     private static  int count = 70;
     private  int price = 100;
-    private String productName = "Сок";
     private boolean alco = false;
+    private static String name = "Сок";
 
     @Override
     public int getCount() {
@@ -24,5 +24,9 @@ public class Juice extends SomeProduct {
     @Override
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public static String getProductName() {
+        return name;
     }
 }

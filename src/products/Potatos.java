@@ -3,7 +3,7 @@ package products;
 public class Potatos extends SomeProduct {
     private static int count = 180;
     private int price = 90;
-    private String productName = "Картошка";
+    private static String productName = "Картошка";
     private boolean alco = false;
 
     @Override
@@ -24,5 +24,9 @@ public class Potatos extends SomeProduct {
     @Override
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public static String getProductName() {
+        return productName;
     }
 }

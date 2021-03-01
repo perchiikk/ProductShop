@@ -2,6 +2,7 @@ package instance;
 
 import products.SomeProduct;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -10,11 +11,13 @@ public class Customer {
     private ProductCart productCart;
     private int age;
     private boolean answerForAge = false;
+    private ShopManager shopManager;
 
-    public Customer(double budget, ProductCart productCart, int age) {
+    public Customer(double budget, ProductCart productCart, int age, ShopManager shopManager) {
         this.budget = budget;
         this.productCart = productCart;
         this.age = age;
+        this.shopManager = shopManager;
     }
 
     public double getBudget() {
@@ -37,6 +40,15 @@ public class Customer {
         return age;
     }
 
+    public void addToCartOrder() throws IOException {
+        Map<String, Integer> mapOfOrder = shopManager.getOrder();
+        for(Map.Entry<String, Integer> entry : mapOfOrder.entrySet()){
+            SomeProduct someProduct = shopManager.getTypeProduct(entry.getKey());
+            int count = entry.getValue();
+            productCart.addToCart(someProduct, count);
+            System.out.println("====================");
+        }
+    }
     /**
      * Пользователь добавляет позицию в корзину
      *
