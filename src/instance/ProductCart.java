@@ -8,8 +8,6 @@ public class ProductCart {
     private Map<SomeProduct, Integer> productCart = new HashMap<>();
     /**
      * Добавить позицию в корзину, если кол-во на складе позволяет
-     * @param someProduct
-     * @param count
      */
     public void addToCart(SomeProduct someProduct, int count){
         if(count <= someProduct.getCount()){
@@ -41,8 +39,6 @@ public class ProductCart {
 
     /**
      * Удалить из корзины определенную позицию
-     * @param someProduct
-     * @param count
      */
     public void removeFromCart(SomeProduct someProduct, int count) {
         if(productCart.containsKey(someProduct)){
