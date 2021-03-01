@@ -64,12 +64,6 @@ public class ProductCart {
      * Очистить корзину полностью
      */
     public void removeAll(){
-        /*for(Iterator<Map.Entry<SomeProduct, Integer>> it = productCart.entrySet().iterator(); it.hasNext();){
-            Map.Entry<SomeProduct, Integer> entry = it.next();
-            for(int i = 0; i<productCart.size(); i++){
-                it.remove();
-            }
-        }*/
         productCart.clear();
         System.out.println("Корзина пуста");
     }
