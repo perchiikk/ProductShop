@@ -19,7 +19,7 @@ public class ProductCart {
             else {
                 productCart.put(someProduct, count);
             }
-            System.out.println("Товар успешно доабвлен в корзину");
+            System.out.println("Товар успешно добавлен в корзину");
             someProduct.setCount(someProduct.getCount() - count);
         }
         else {

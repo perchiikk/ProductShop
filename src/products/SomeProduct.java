@@ -3,9 +3,10 @@ package products;
 import java.util.Objects;
 
 public abstract class SomeProduct {
-    private int count;
+    private static int count;
     private int price;
     private boolean alco;
+    private String productName;
 
     public int getCount() {
         return count;
@@ -20,7 +21,7 @@ public abstract class SomeProduct {
     }
 
     public void setCount(int count) {
-        this.count = count;
+        SomeProduct.count = count;
     }
 
     @Override
@@ -28,11 +29,11 @@ public abstract class SomeProduct {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SomeProduct that = (SomeProduct) o;
-        return count == that.count && price == that.price && alco == that.alco;
+        return price == that.price && alco == that.alco && Objects.equals(productName, that.productName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, price, alco);
+        return Objects.hash(price, alco, productName);
     }
 }

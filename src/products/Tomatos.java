@@ -1,10 +1,10 @@
 package products;
 
-public class Tomatos extends SomeProduct{
+public class Tomatos extends SomeProduct {
     private static int count = 130;
     private int price = 80;
-    private static String productName = "Томат";
-    private  boolean alco = false;
+    private String productName = "Томат";
+    private boolean alco = false;
 
     @Override
     public int getCount() {
@@ -26,7 +26,7 @@ public class Tomatos extends SomeProduct{
         this.count = count;
     }
 
-    public static String getProductName() {
+    public String getProductName() {
         return productName;
     }
 }

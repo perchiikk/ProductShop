@@ -97,7 +97,6 @@ public class Customer {
      * Совершить покупку
      */
     public void buy() {
-
         List<SomeProduct> alcoProduct = productCart.getAlco();
         if (!alcoProduct.isEmpty()) {
             if (getAge() >= 18) {

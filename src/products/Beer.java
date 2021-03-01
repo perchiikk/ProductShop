@@ -4,7 +4,7 @@ public class Beer extends SomeProduct {
     private static int count = 100;
     private int price = 50;
     private boolean alco = true;
-    private static String name = "Пиво";
+    private String name = "Пиво";
 
     public int getCount() {
         return count;
@@ -18,7 +18,7 @@ public class Beer extends SomeProduct {
         return alco;
     }
 
-    public static String getProductName() {
+    public String getProductName() {
         return name;
     }
 }

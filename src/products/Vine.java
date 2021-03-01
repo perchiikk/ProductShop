@@ -3,7 +3,7 @@ package products;
 public class Vine extends SomeProduct{
     private static int count = 90;
     private int price = 350;
-    private static String productName = "Вино";
+    private String productName = "Вино";
     private boolean alco = true;
 
     @Override
@@ -26,7 +26,7 @@ public class Vine extends SomeProduct{
         this.count = count;
     }
 
-    public static String getProductName() {
+    public String getProductName() {
         return productName;
     }
 }

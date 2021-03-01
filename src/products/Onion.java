@@ -3,7 +3,7 @@ package products;
 public class Onion extends SomeProduct{
     private static int count = 100;
     private int price = 10;
-    private static String productName = "Лук";
+    private String productName = "Лук";
     private boolean alco = false;
 
     @Override
@@ -26,7 +26,7 @@ public class Onion extends SomeProduct{
         this.count = count;
     }
 
-    public static String getProductName() {
+    public String getProductName() {
         return productName;
     }
 }

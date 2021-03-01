@@ -4,7 +4,7 @@ public class Cheese extends SomeProduct {
     private static int count = 123;
     private int price = 120;
     private boolean alco = false;
-    private static String name = "Сыр";
+    private String name = "Сыр";
 
     @Override
     public int getCount() {
@@ -26,7 +26,7 @@ public class Cheese extends SomeProduct {
         Cheese.count = count;
     }
 
-    public static String getProductName() {
+    public String getProductName() {
         return name;
     }
 }
