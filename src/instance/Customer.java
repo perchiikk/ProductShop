@@ -55,9 +55,6 @@ public class Customer {
     }
     /**
      * Пользователь добавляет позицию в корзину
-     *
-     * @param someProduct
-     * @param count
      */
     public void addToCart(SomeProduct someProduct, int count) {
         productCart.addToCart(someProduct, count);
@@ -74,9 +71,6 @@ public class Customer {
 
     /**
      * Удалить элемент из корзины
-     *
-     * @param someProduct
-     * @param count
      */
     public void removeFromProductCar(SomeProduct someProduct, int count) {
         productCart.removeFromCart(someProduct, count);

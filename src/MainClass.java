@@ -14,7 +14,3 @@ public class MainClass {
     }
 
 }
-
-// взаимодействие через консоль
-//jdbc
-
