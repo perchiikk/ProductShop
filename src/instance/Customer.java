@@ -40,6 +40,10 @@ public class Customer {
         return age;
     }
 
+    /**
+     * Передача выбранных позиций в метод addToCart
+     * @throws IOException
+     */
     public void addToCartOrder() throws IOException {
         Map<String, Integer> mapOfOrder = shopManager.getOrder();
         for(Map.Entry<String, Integer> entry : mapOfOrder.entrySet()){

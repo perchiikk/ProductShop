@@ -80,7 +80,6 @@ public class ProductCart {
 
     /**
      * Получить стоимость всех продуктов из корзины с учетом скидки
-     * @return
      */
     public double getSum() {
         double sumAll = 0;
@@ -100,7 +99,6 @@ public class ProductCart {
 
     /**
      * Акция если в корзине более 4-х штук одной позиции(неважно какой) идет скидка 10%
-     * @return
      */
     public List<SomeProduct> getDiscount(){
         List<SomeProduct> discountList = new ArrayList<>();
