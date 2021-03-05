@@ -44,7 +44,7 @@ public class Customer {
      * Передача выбранных позиций в метод addToCart
      * @throws IOException
      */
-    public void addToCartOrder() throws IOException {
+    public void addToCartOrder() {
         Map<String, Integer> mapOfOrder = shopManager.getOrder();
         if(mapOfOrder.isEmpty()){
             ConsoleHelper.writeMessage("Невозможно положить товар в корзину. Вы не выбрали ни одной позиции");

@@ -27,7 +27,7 @@ public class ShopManager {
      * Приветсвие с покупателем
      * @throws IOException
      */
-    public void sayHello() throws IOException {
+    public void sayHello() {
         ConsoleHelper.writeMessage("Добро пожаловать в наш магазин! Как вас зовут?");
         nameCustomer = ConsoleHelper.readText();
         ConsoleHelper.writeMessage("Сколько вам лет?");
@@ -62,7 +62,7 @@ public class ShopManager {
      * Передача списка заказа
      * @throws IOException
      */
-    public Map<String, Integer> getOrder() throws IOException {
+    public Map<String, Integer> getOrder() {
         mapOfOrder = new HashMap<>();
         String order = "";
         int count = 0;
@@ -81,7 +81,7 @@ public class ShopManager {
         return Storage.storageMap.get(nameProduct);
     }
 
-    public String getProductName() throws IOException {
+    public String getProductName() {
         String order;
         while (true){
             ConsoleHelper.writeMessage("Введите название позиции или exit для выхода");

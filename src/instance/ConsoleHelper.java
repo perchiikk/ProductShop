@@ -4,22 +4,30 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleHelper {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void writeMessage(String message){
         System.out.println(message);
     }
 
-    public static String readText() throws IOException {
-        return reader.readLine();
+    public static String readText(){
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            return reader.readLine();
+        }
+        catch (Exception e){
+            ConsoleHelper.writeMessage("Произошла ошибка");
+        }
+        return null;
     }
 
     public static int readInt() {
         while (true) {
             try {
                 return Integer.parseInt(readText());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 ConsoleHelper.writeMessage("Вы ввели неверное число. Повторите ввод");
+            }
+            catch (Exception e){
+                ConsoleHelper.writeMessage("Произошла ошибка");
             }
         }
     }
